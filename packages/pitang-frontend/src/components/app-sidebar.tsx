@@ -12,7 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { FrameIcon, PieChartIcon, MapIcon, TerminalIcon } from "lucide-react";
+import { FrameIcon, PieChartIcon, MapIcon, TerminalIcon, PackageIcon } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 
 const data = {
@@ -23,6 +23,11 @@ const data = {
       name: "Dashboard",
       url: "/dashboard",
       icon: <PieChartIcon />,
+    },
+    {
+      name: "Products",
+      url: "/dashboard/products",
+      icon: <PackageIcon />,
     },
     {
       name: "Users",
