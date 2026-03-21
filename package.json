@@ -1,0 +1,15 @@
+{
+  "name": "atividade-02",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd packages/pitang-frontend && bun run dev",
+    "build": "cd packages/pitang-frontend && bun run build",
+    "preview": "cd packages/pitang-frontend && bun run preview",
+    "lint": "cd packages/pitang-frontend && bun run lint"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
+
