@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { GridIcon, ListIcon } from "lucide-react";
 
-import { fetchProducts } from "@/features/products/api/products.api";
-import type { Product } from "@/features/products/model/product.types";
+import { fetchProducts } from "@/lib/api";
+import type { Product } from "@/types";
 
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,7 +13,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
+} from "@/components/ui/card";
 import {
   Pagination,
   PaginationContent,
@@ -22,7 +22,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/shared/ui/pagination";
+} from "@/components/ui/pagination";
 import {
   Table,
   TableBody,
@@ -30,7 +30,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/ui/table";
+} from "@/components/ui/table";
 
 export const Route = createFileRoute("/dashboard/products/")({
   component: ProductsPage,
@@ -240,4 +240,3 @@ function ProductsPage() {
     </div>
   );
 }
-
