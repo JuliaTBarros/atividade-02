@@ -1,14 +1,7 @@
-import { Button } from "@/components/ui/button";
 import { createFileRoute } from "@tanstack/react-router";
+import { HomePage } from "@/pages/home/home.page";
 
 export const Route = createFileRoute("/")({
-  component: RouteComponent,
+  component: HomePage,
 });
 
-function RouteComponent() {
-  return (
-    <div>
-      <Button variant="destructive">Hello</Button>
-    </div>
-  );
-}

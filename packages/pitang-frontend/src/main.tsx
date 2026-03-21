@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/shared/ui/sonner";
 
 import "./index.css";
 
