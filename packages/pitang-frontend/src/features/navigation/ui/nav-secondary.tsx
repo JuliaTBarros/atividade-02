@@ -1,7 +1,6 @@
-"use client"
-
+﻿"use client"
 import * as React from "react"
-
+import { Link } from "@tanstack/react-router"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -9,7 +8,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/ui/sidebar"
-
 export function NavSecondary({
   items,
   ...props
@@ -26,7 +24,7 @@ export function NavSecondary({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton size="sm" render={<a href={item.url} />}>
+              <SidebarMenuButton size="sm" render={<Link to={item.url as any} />}>
                 {item.icon}
                 <span>{item.title}</span>
               </SidebarMenuButton>
@@ -37,4 +35,3 @@ export function NavSecondary({
     </SidebarGroup>
   )
 }
-

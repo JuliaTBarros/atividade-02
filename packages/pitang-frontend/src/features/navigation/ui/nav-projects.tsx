@@ -1,4 +1,4 @@
-import {
+﻿import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -19,7 +19,7 @@ import {
   ShareIcon,
   Trash2Icon,
 } from "lucide-react";
-
+import { Link } from "@tanstack/react-router";
 export function NavProjects({
   projects,
 }: {
@@ -35,7 +35,7 @@ export function NavProjects({
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton render={<a href={item.url} />}>
+            <SidebarMenuButton render={<Link to={item.url as any} />}>
               {item.icon}
               <span>{item.name}</span>
             </SidebarMenuButton>
@@ -83,4 +83,3 @@ export function NavProjects({
     </SidebarGroup>
   );
 }
-
