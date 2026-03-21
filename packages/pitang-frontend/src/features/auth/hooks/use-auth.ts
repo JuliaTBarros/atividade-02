@@ -15,22 +15,42 @@ function getCookie(cookieName: string) {
 
 export function useAuth() {
   const [loggedUser, setLoggedUser] = useState<LoggedUser | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getAuthenticatedUser() {
-      const response = await fetch("https://dummyjson.com/auth/me", {
+  // Função para validar token do cookie
+  const validateToken = async (token: string) => {
+    try {
+      const response = await fetch(`${baseURL}/auth/me`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${getCookie("@pitang/accessToken")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
       if (!response.ok) {
-        return toast.error("Something went wrong");
+        return null;
       }
 
-      setLoggedUser(await response.json());
+      return await response.json();
+    } catch {
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    async function getAuthenticatedUser() {
+      const token = getCookie("@pitang/accessToken");
+      
+      if (!token) {
+        setLoggedUser(null);
+        setIsInitialized(true);
+        return;
+      }
+
+      const user = await validateToken(token);
+      setLoggedUser(user);
+      setIsInitialized(true);
     }
 
     getAuthenticatedUser();
@@ -38,7 +58,7 @@ export function useAuth() {
 
   async function handleLogout() {
     document.cookie = "@pitang/accessToken=; path=/; Max-Age=0";
-
+    setLoggedUser(null);
     navigate({ to: "/login" });
   }
 
@@ -66,15 +86,24 @@ export function useAuth() {
 
     toast.success("Welcome...");
 
+    // Seta o cookie
     document.cookie = `@pitang/accessToken=${json.accessToken}; path=/; Max-Age=86400`;
 
-    navigate({ to: "/dashboard" });
+    // Valida imediatamente e atualiza estado local
+    const user = await validateToken(json.accessToken);
+    if (user) {
+      setLoggedUser(user);
+      navigate({ to: "/dashboard" });
+    } else {
+      toast.error("Failed to authenticate");
+    }
   }
 
   return {
     loggedUser,
     handleLogin,
     handleLogout,
+    isInitialized,
   };
 }
 

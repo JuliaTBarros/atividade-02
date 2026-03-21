@@ -14,6 +14,9 @@ import {
   SidebarTrigger,
 } from "@/shared/ui/sidebar";
 import { Fragment } from "react/jsx-runtime";
+import { useAuth } from "@/features/auth/hooks/use-auth";
+import { useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/dashboard")({
   component: RouteComponent,
@@ -21,6 +24,20 @@ export const Route = createFileRoute("/dashboard")({
 
 function RouteComponent() {
   const location = useLocation();
+  const { loggedUser, isInitialized } = useAuth();
+  const navigate = useNavigate();
+
+  // Se não está logado, redireciona para login (mas só após inicializar)
+  useEffect(() => {
+    if (isInitialized && !loggedUser) {
+      navigate({ to: "/login" });
+    }
+  }, [loggedUser, navigate, isInitialized]);
+
+  // Se ainda está inicializando ou não logado, não renderiza nada
+  if (!isInitialized || !loggedUser) {
+    return null;
+  }
 
   const paths = location.pathname.split("/").filter(Boolean);
 
@@ -67,3 +84,5 @@ function RouteComponent() {
     </SidebarProvider>
   );
 }
+
+
