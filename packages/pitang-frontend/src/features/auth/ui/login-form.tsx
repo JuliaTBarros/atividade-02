@@ -16,13 +16,18 @@ export type SignInForm = {
   password: string;
 };
 
+type LoginFormProps = Omit<React.ComponentProps<"form">, "onSubmit"> & {
+  onSubmit: (
+    event: SubmitEvent<HTMLFormElement>,
+    data: SignInForm,
+  ) => void | Promise<void>;
+};
+
 export function LoginForm({
   className,
   onSubmit,
   ...props
-}: React.ComponentProps<"form"> & {
-  onSubmit: (event: SubmitEvent<HTMLFormElement>, data: SignInForm) => void;
-}) {
+}: LoginFormProps) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 

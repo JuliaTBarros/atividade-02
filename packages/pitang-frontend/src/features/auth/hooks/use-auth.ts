@@ -65,7 +65,7 @@ export function useAuth() {
   async function handleLogin(
     event: SubmitEvent<HTMLFormElement>,
     data: SignInForm,
-  ) {
+  ): Promise<void> {
     event.preventDefault();
 
     const response = await fetch(`${baseURL}/auth/login`, {
@@ -81,7 +81,8 @@ export function useAuth() {
     const json = await response.json();
 
     if (!response.ok) {
-      return toast.error(json.message);
+      toast.error(json.message);
+      return;
     }
 
     toast.success("Welcome...");

@@ -1,10 +1,8 @@
 ﻿import {
     SidebarGroup,
     SidebarMenu,
-    SidebarMenuAction,
     SidebarMenuButton,
     SidebarMenuItem,
-    useSidebar,
 } from "@/shared/ui/sidebar";
 
 import {Link} from "@tanstack/react-router";
@@ -18,7 +16,6 @@ export function NavProjects({
         icon: React.ReactNode;
     }[];
 }) {
-    const {isMobile} = useSidebar();
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
             <SidebarMenu>
