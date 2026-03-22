@@ -46,7 +46,7 @@ export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
     const {loggedUser, handleLogout} = useAuth();
 
     const [theme, setTheme] = React.useState<"light" | "dark">(() => {
-        if (typeof window === "undefined") return "light";
+        if (typeof window === "undefined") return "dark";
 
         const savedTheme = window.localStorage.getItem("theme");
         if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
