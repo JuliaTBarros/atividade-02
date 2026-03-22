@@ -23,6 +23,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/shared/ui/pagination";
+import { getPaginationItems } from "@/shared/lib/pagination";
 import {
   Table,
   TableBody,
@@ -61,34 +62,6 @@ export function ProductsPage() {
   }, [page]);
 
   const totalPages = Math.ceil(total / limit);
-
-  const getPageNumbers = () => {
-    const pages: (number | "ellipsis")[] = [];
-    const maxVisible = 5;
-
-    if (totalPages <= maxVisible) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      if (page <= 3) {
-        for (let i = 1; i <= 4; i++) pages.push(i);
-        pages.push("ellipsis");
-        pages.push(totalPages);
-      } else if (page >= totalPages - 2) {
-        pages.push(1);
-        pages.push("ellipsis");
-        for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i);
-      } else {
-        pages.push(1);
-        pages.push("ellipsis");
-        for (let i = page - 1; i <= page + 1; i++) pages.push(i);
-        pages.push("ellipsis");
-        pages.push(totalPages);
-      }
-    }
-    return pages;
-  };
 
   if (loading) {
     return (
@@ -208,7 +181,7 @@ export function ProductsPage() {
               }
             />
           </PaginationItem>
-          {getPageNumbers().map((pageNum, idx) =>
+          {getPaginationItems(page, totalPages).map((pageNum, idx) =>
             pageNum === "ellipsis" ? (
               <PaginationItem key={`ellipsis-${idx}`}>
                 <PaginationEllipsis />

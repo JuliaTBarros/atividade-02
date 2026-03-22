@@ -201,12 +201,6 @@ export function DashboardPage() {
                     <h1 id="dashboard-title" className="text-2xl font-bold tracking-tight text-foreground">
                         Dashboard
                     </h1>
-                    <p className="text-sm leading-6 text-muted-foreground">
-                        Metrics loaded from DummyJSON product API.
-                    </p>
-                    <p className="text-xs leading-5 text-muted-foreground">
-                        Source: {DASHBOARD_SOURCE_URL} | Loaded: {products.length} products
-                    </p>
                 </div>
 
                 <Button
@@ -370,7 +364,7 @@ export function DashboardPage() {
                                         style={{backgroundColor: entry.color}}
                                         aria-hidden="true"
                                     />
-                    <span>{entry.category}</span>
+                                    <span>{entry.category}</span>
                                 </li>
                             ))}
                         </ul>
