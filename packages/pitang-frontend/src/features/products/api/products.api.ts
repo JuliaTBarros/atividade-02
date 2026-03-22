@@ -16,6 +16,25 @@ export async function fetchProducts(
   return response.json();
 }
 
+export async function fetchAllProducts(limitPerPage: number = 50): Promise<Product[]> {
+  const firstPage = await fetchProducts(1, limitPerPage);
+
+  if (firstPage.total <= firstPage.products.length) {
+    return firstPage.products;
+  }
+
+  const totalPages = Math.ceil(firstPage.total / limitPerPage);
+  const remainingPageRequests = Array.from({ length: totalPages - 1 }, (_, index) =>
+    fetchProducts(index + 2, limitPerPage),
+  );
+  const remainingPages = await Promise.all(remainingPageRequests);
+
+  return [
+    ...firstPage.products,
+    ...remainingPages.flatMap((page) => page.products),
+  ].slice(0, firstPage.total);
+}
+
 export async function fetchProductById(id: number): Promise<Product> {
   const response = await fetch(`${BASE_URL}/products/${id}`);
   
