@@ -12,7 +12,7 @@ export function NavProjects({
                             }: {
     projects: {
         name: string;
-        url: string;
+        url: React.ComponentProps<typeof Link>["to"];
         icon: React.ReactNode;
     }[];
 }) {
@@ -21,7 +21,7 @@ export function NavProjects({
             <SidebarMenu>
                 {projects.map((item) => (
                     <SidebarMenuItem key={item.name}>
-                        <SidebarMenuButton render={<Link to={item.url as any}/>}>
+                        <SidebarMenuButton render={<Link to={item.url}/>}> 
                             {item.icon}
                             <span>{item.name}</span>
                         </SidebarMenuButton>

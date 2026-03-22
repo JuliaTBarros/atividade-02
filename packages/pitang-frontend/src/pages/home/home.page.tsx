@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
 
 export function HomePage() {
     return (
-        <div className="dark min-h-screen bg-background text-foreground overflow-hidden">
+        <div className="min-h-screen bg-background text-foreground overflow-hidden">
             {/* ===== HERO SECTION ===== */}
             <section className="relative px-4 py-20 md:py-32 lg:py-40 max-w-7xl mx-auto">
                 {/* Decorative background elements */}
@@ -35,7 +35,7 @@ export function HomePage() {
                     </h1>
 
                     {/* Description */}
-                    <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         Organize, visualize e gerencie milhares de produtos com uma interface intuitiva e poderosa.
                         Tudo que você precisa para crescer seu negócio está aqui.
                     </p>
@@ -72,7 +72,7 @@ export function HomePage() {
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                             Tudo que você precisa
                         </h2>
-                        <p className="text-foreground/85 text-lg max-w-2xl mx-auto">
+                        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                             Recursos poderosos para gerenciar seu catálogo com eficiência
                         </p>
                     </div>
@@ -89,7 +89,7 @@ export function HomePage() {
                                 <CardTitle>Catálogo Completo</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <CardDescription className="text-foreground/80 leading-relaxed">
+                                <CardDescription className="text-muted-foreground leading-relaxed">
                                     Visualize e gerencie milhares de produtos em tempo real com busca avançada
                                 </CardDescription>
                             </CardContent>
@@ -105,7 +105,7 @@ export function HomePage() {
                                 <CardTitle>Insights Detalhados</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <CardDescription className="text-foreground/80 leading-relaxed">
+                                <CardDescription className="text-muted-foreground leading-relaxed">
                                     Acompanhe vendas, preços e estoque com dashboards visuais e dados em tempo real
                                 </CardDescription>
                             </CardContent>
@@ -121,7 +121,7 @@ export function HomePage() {
                                 <CardTitle>Colaboração</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <CardDescription className="text-foreground/80 leading-relaxed">
+                                <CardDescription className="text-muted-foreground leading-relaxed">
                                     Trabalhe em equipe com permissões granulares e histórico de alterações
                                 </CardDescription>
                             </CardContent>
@@ -137,7 +137,7 @@ export function HomePage() {
                                 <CardTitle>Super Rápido</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <CardDescription className="text-foreground/80 leading-relaxed">
+                                <CardDescription className="text-muted-foreground leading-relaxed">
                                     Interface otimizada que carrega em segundos com performance incomparável
                                 </CardDescription>
                             </CardContent>
@@ -183,12 +183,12 @@ export function HomePage() {
             {/* ===== FOOTER ===== */}
             <footer className="px-4 py-12 border-t border-border mt-20">
                 <div
-                    className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground/80 text-sm">
+                    className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-muted-foreground text-sm">
                     <p>&copy; 2026 Product Manager. Todos os direitos reservados.</p>
                     <div className="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" className="text-foreground/85 hover:text-foreground hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">Privacidade</a>
-                        <a href="#" className="text-foreground/85 hover:text-foreground hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">Termos</a>
-                        <a href="#" className="text-foreground/85 hover:text-foreground hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">Contato</a>
+                        <a href="/About#privacy" className="text-muted-foreground hover:text-foreground hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">Privacidade</a>
+                        <a href="/About#terms" className="text-muted-foreground hover:text-foreground hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">Termos</a>
+                        <a href="/About#contact" className="text-muted-foreground hover:text-foreground hover:underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">Contato</a>
                     </div>
                 </div>
             </footer>

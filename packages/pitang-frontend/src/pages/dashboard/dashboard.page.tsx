@@ -32,7 +32,6 @@ import {
     YAxis,
 } from "recharts";
 
-const DASHBOARD_SOURCE_URL = "https://dummyjson.com/products";
 const INVALID_BRAND_VALUES = new Set(["undefined", "unbranded"]);
 const TOP_BRAND_COUNT = 5;
 const TOP_CATEGORY_COUNT = 4;
@@ -252,7 +251,7 @@ export function DashboardPage() {
                         <CardDescription>Top 5 brands from full catalog.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <figure aria-labelledby="stock-by-brand-title">
+                        <figure aria-labelledby="stock-by-brand-title" aria-describedby="stock-by-brand-summary">
                             <div className="h-72 w-full">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart data={stockByBrandWithColors}
@@ -299,6 +298,13 @@ export function DashboardPage() {
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>
+                            <figcaption id="stock-by-brand-summary" className="sr-only">
+                                {stockByBrandWithColors.length
+                                    ? `Stock by brand: ${stockByBrandWithColors
+                                        .map((entry) => `${entry.brand} ${entry.stock}`)
+                                        .join(", ")}.`
+                                    : "Stock by brand chart has no data."}
+                            </figcaption>
                         </figure>
                         <ul className="mt-3 grid gap-1 text-sm sm:grid-cols-2" aria-label="Stock by brand legend">
                             {stockByBrandWithColors.map((entry) => (
@@ -308,7 +314,7 @@ export function DashboardPage() {
                                         style={{backgroundColor: entry.color}}
                                         aria-hidden="true"
                                     />
-                                    <span>{entry.brand}</span>
+                                    <span>{entry.brand}: {entry.stock}</span>
                                 </li>
                             ))}
                         </ul>
@@ -321,7 +327,7 @@ export function DashboardPage() {
                         <CardDescription>Top 4 categories and one "outros" group.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <figure aria-labelledby="products-by-category-title">
+                        <figure aria-labelledby="products-by-category-title" aria-describedby="products-by-category-summary">
                             <div className="h-72 w-full">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <PieChart>
@@ -352,6 +358,13 @@ export function DashboardPage() {
                                 </ResponsiveContainer>
                             </div>
 
+                            <figcaption id="products-by-category-summary" className="sr-only">
+                                {productsByCategoryWithColors.length
+                                    ? `Products by category: ${productsByCategoryWithColors
+                                        .map((entry) => `${entry.category} ${entry.total}`)
+                                        .join(", ")}.`
+                                    : "Products by category chart has no data."}
+                            </figcaption>
                         </figure>
                         <ul className="mt-3 grid gap-1 text-sm sm:grid-cols-2" aria-label="Products by category legend">
                             {productsByCategoryWithColors.map((entry) => (
@@ -364,7 +377,7 @@ export function DashboardPage() {
                                         style={{backgroundColor: entry.color}}
                                         aria-hidden="true"
                                     />
-                                    <span>{entry.category}</span>
+                                    <span>{entry.category}: {entry.total}</span>
                                 </li>
                             ))}
                         </ul>
