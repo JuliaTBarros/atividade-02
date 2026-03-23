@@ -55,8 +55,6 @@ function RouteComponent() {
                     src={sideImageSrc}
                     alt={sideImageAlt}
                     className="absolute inset-0 h-full w-full object-cover dark:brightness-90"
-
-
                 />
             </div>
         </div>
