@@ -1,6 +1,6 @@
 import {createFileRoute} from "@tanstack/react-router";
-import {TodosPage} from "@/pages/dashboard/todos/todos.page";
+import {TodosScreen} from "@/features/todos/ui/todos-screen";
 
 export const Route = createFileRoute("/dashboard/todos/")({
-    component: TodosPage,
+    component: TodosScreen,
 });
